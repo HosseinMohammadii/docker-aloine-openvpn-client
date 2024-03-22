@@ -2,7 +2,7 @@ services:
   openvpn-client:
     build:
       context: ./build
-      dockerfile: ./build/Dockerfile
+      dockerfile: Dockerfile
     container_name: openvpn-client
     cap_add:
       - NET_ADMIN
