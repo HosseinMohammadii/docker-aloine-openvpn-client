@@ -38,9 +38,9 @@ if is_enabled "$KILL_SWITCH"; then
 fi
 
 # Docker secret that contains the credentials for accessing the VPN.
-if [[ $AUTH_SECRET ]]; then
-    openvpn_args+=("--auth-user-pass" "/run/secrets/$AUTH_SECRET")
-fi
+#if [[ $AUTH_SECRET ]]; then
+#    openvpn_args+=("--auth-user-pass" "/run/secrets/$AUTH_SECRET")
+#fi
 
 openvpn "${openvpn_args[@]}" &
 openvpn_pid=$!
