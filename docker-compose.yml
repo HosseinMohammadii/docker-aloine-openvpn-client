@@ -8,7 +8,7 @@ services:
       - NET_ADMIN
     environment:
       - KILL_SWITCH=off
-#      - CONFIG_FILE=dk-cph.ovpn
+      - CONFIG_FILE=dk-cph.ovpn
     devices:
       - /dev/net/tun:/dev/net/tun
     volumes:
