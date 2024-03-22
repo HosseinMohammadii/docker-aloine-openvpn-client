@@ -30,4 +30,4 @@ services:
 
 networks:
   openvpnclient:
-    driver: 
+    driver: bridge
