@@ -1,13 +1,18 @@
 services:
   openvpn-client:
-    image: ghcr.io/wfg/openvpn-client:latest
+    build:
+      context: ./build
+      dockerfile: ./build/Dockerfile
     container_name: openvpn-client
     cap_add:
       - NET_ADMIN
+    environment:
+      - KILL_SWITCH=off
+#      - CONFIG_FILE=dk-cph.ovpn
     devices:
       - /dev/net/tun:/dev/net/tun
-    environment:
-      - ALLOWED_SUBNETS=192.168.10.0/24
     volumes:
-      - ./local:/config
-    restart: unless-stopped
+      - ./confs:/config
+    ports:
+      - 11944:1194
+#    restart: unless-stopped
