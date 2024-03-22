@@ -1,10 +1,11 @@
-FROM alpine:3.17
+FROM alpine:3
 
 RUN apk add --no-cache \
     bash \
     bind-tools \
     iptables \
     ip6tables \
+    curl \
     openvpn
 
 COPY . /usr/local/bin
