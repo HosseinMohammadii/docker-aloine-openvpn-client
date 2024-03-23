@@ -16,6 +16,8 @@ services:
       - ./confs:/config
     ports:
       - 11944:1194
+      - 10890:10890
+
     # networks:
     #   - openvpnclient
 #    restart: unless-stopped
@@ -25,11 +27,8 @@ services:
     depends_on:
       - openvpnclient
     environment:
-      - PROXY_PORT=1080
+      - PROXY_PORT=10890
     network_mode: service:openvpnclient
-    ports:
-      - "10890:10890"
-
 
 # networks:
 #   openvpnclient:
