@@ -4,6 +4,7 @@ services:
       context: ./build
       dockerfile: Dockerfile
     # container_name: openvpn-client
+    hostname: openvpn-client
     cap_add:
       - NET_ADMIN
     environment:
@@ -15,19 +16,21 @@ services:
       - ./confs:/config
     ports:
       - 11944:1194
-    networks:
-      - openvpnclient
+    # networks:
+    #   - openvpnclient
 #    restart: unless-stopped
   socks5:
     # restart: always
     image: serjs/go-socks5-proxy
+    depends_on:
+      - openvpn-client
     environment:
       - PROXY_PORT=1080
+    network_mode: service:openvpnclient
     ports:
-      - "1080:1080"
-    networks:
-      - openvpnclient
+      - "10890:10890"
 
-networks:
-  openvpnclient:
-    driver: bridge
+
+# networks:
+#   openvpnclient:
+#     driver: bridge
